@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Cheetah
+  - Elephant
+  - Mouse
+  - Nemo
+  - Seal
+  - Sunflower
   layers:
   - Default
   - TransparentFX
