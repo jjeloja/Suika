@@ -18,7 +18,7 @@ public bool collided = false;
         
     }
 
-    void OnCollisionEnter(Collision other) {
+    void OnCollisionEnter2D(Collision2D other) {
         collided = true;
     }
 }

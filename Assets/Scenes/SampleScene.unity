@@ -1618,7 +1618,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -5861055129762834287, guid: 8faee07af3b90ba468d7f0b462739b35, type: 3}
       propertyPath: collided
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 696213309342383066, guid: 8faee07af3b90ba468d7f0b462739b35, type: 3}
       propertyPath: m_SortingOrder
