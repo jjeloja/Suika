@@ -5,17 +5,17 @@ using UnityEngine;
 public class SpawnClick : MonoBehaviour
 {
 	public GameObject angel1;
-  public GameObject angel2;
-  public GameObject angel3;
-  public GameObject angel4;
+	public GameObject angel2;
+	public GameObject angel3;
+	public GameObject angel4;
 	public GameObject angel5;
-  public GameObject angel6;
-  public float launchVelocity = 700f;
-  private GameObject[] angels;
-  private string[] angelTags;
-  private bool holdingSonny = true;
-  private GameObject currSonny;
-  private int sonnyIndex;
+	public GameObject angel6;
+	public float launchVelocity = 700f;
+	private GameObject[] angels;
+	private string[] angelTags;
+	private bool holdingSonny = true;
+	private GameObject currSonny;
+	private int sonnyIndex;
 
     // Start is called before the first frame update
     void Start()
