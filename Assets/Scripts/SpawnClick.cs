@@ -35,7 +35,7 @@ public class SpawnClick : MonoBehaviour
       }
 
       /** updates Wings position to follow mousePos.x  */
-		  Vector3 mousePos = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,330,-99);
+		  Vector3 mousePos = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,390,-99);
 		  gameObject.transform.position = mousePos;
 
       /** drops current sonny */
