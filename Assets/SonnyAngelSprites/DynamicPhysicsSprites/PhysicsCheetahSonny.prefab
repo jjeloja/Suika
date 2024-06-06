@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 38976461813114761}
   - component: {fileID: 4275703043511307530}
   - component: {fileID: -5861055129762834287}
+  - component: {fileID: -1754794767838883300}
   m_Layer: 7
   m_Name: PhysicsCheetahSonny
   m_TagString: Cheetah
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 440.2, y: 298, z: -99}
-  m_LocalScale: {x: 22.97035, y: 22.97035, z: 22.97035}
+  m_LocalScale: {x: 12, y: 12, z: 12}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -257,3 +258,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collided: 0
+--- !u!114 &-1754794767838883300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5761698904344283064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d86a310007361d4429b9ae7e8b3c6269, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angel1: {fileID: 5761698904344283064}
+  angel2: {fileID: 2818246800634697345, guid: 9b775837c64187142821430ee1abcc1a, type: 3}
+  angel3: {fileID: 2866665110524505335, guid: 4cef8e19cbf0f31479c579d03f10aeda, type: 3}
+  angel4: {fileID: 4273420756203182663, guid: 528d0e73629c4474aaab42b26a0837a3, type: 3}
+  angel5: {fileID: 6097723939285029169, guid: 53bf83adb1e6a71469ade7152e59c2fd, type: 3}
+  angel6: {fileID: 4748351178898161839, guid: fbddf418712fe734e83afd466c9d0d4c, type: 3}
