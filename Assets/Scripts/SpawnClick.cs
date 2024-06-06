@@ -15,7 +15,6 @@ public class SpawnClick : MonoBehaviour
   private string[] angelTags;
   public bool holdingSonny = true;
   private GameObject currSonny;
-
   // Start is called before the first frame update
   void Start()
   {
