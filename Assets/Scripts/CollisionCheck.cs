@@ -4,21 +4,10 @@ using UnityEngine;
 
 public class CollisionCheck : MonoBehaviour
 {
-public bool collided = false;
+    public bool collided = false;
 
-    // Start is called before the first frame update
-    void Start()
+    void OnCollisionEnter2D(Collision2D other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void OnCollisionEnter2D(Collision2D other) {
         collided = true;
     }
 }

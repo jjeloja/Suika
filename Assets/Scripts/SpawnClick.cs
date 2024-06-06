@@ -13,8 +13,8 @@ public class SpawnClick : MonoBehaviour
   public float launchVelocity = 700f;
   private GameObject[] angels;
   private string[] angelTags;
-  public bool holdingSonny = true;
-  private GameObject currSonny;
+  public static bool holdingSonny = true;
+  public static GameObject currSonny;
   // Start is called before the first frame update
   void Start()
   {
@@ -47,14 +47,14 @@ public class SpawnClick : MonoBehaviour
     }
 
     /** checks if current sonny has collided + not holding anything to create new sonny */
-    if ((currSonny.GetComponent<CollisionCheck>().collided && !holdingSonny) || (false))
+    if ((currSonny != null && currSonny.GetComponent<CollisionCheck>().collided && !holdingSonny) || (CollideCreateNew.destroyed && !holdingSonny))
     {
-      GameObject newSonny = angels[Random.Range(1, 3)];
+      GameObject newSonny = angels[Random.Range(0, 3)];
       newSonny = Instantiate(newSonny, mousePos, transform.rotation);
       newSonny.transform.SetParent(this.transform);
       currSonny = newSonny;
       holdingSonny = true;
+      CollideCreateNew.destroyed = false;
     }
-
   }
 }
