@@ -15,6 +15,7 @@ public class CollideCreateNew : MonoBehaviour
     private GameObject currentSonny;
     private int sonnyIndex;
     public static bool destroyed = false;
+    public static bool createNew = false;
 
     void Start()
     {
@@ -27,9 +28,7 @@ public class CollideCreateNew : MonoBehaviour
         }
 
         currentSonny = this.gameObject;
-        sonnyIndex = System.Array.IndexOf(angelTags, currentSonny.gameObject.tag); ;
-        Debug.Log("Slay");
-
+        sonnyIndex = System.Array.IndexOf(angelTags, currentSonny.gameObject.tag);
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -38,8 +37,22 @@ public class CollideCreateNew : MonoBehaviour
             and destroys both currSonny and collidedSonny if so */
         if (angelTags[sonnyIndex] == other.gameObject.tag)
         {
-            Destroy(other.gameObject);
+            // currently creates new sonny angel, but just replaces both instead of killing both and only making one
             destroyed = true;
+
+            if (!createNew)
+            {
+                GameObject newSonny = angels[System.Array.IndexOf(angelTags, currentSonny.gameObject.tag) + 1];
+                newSonny = Instantiate(newSonny, currentSonny.gameObject.transform.position, transform.rotation);
+                newSonny.gameObject.GetComponent<Collider2D>().enabled = !newSonny.gameObject.GetComponent<Collider2D>().enabled;
+                newSonny.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                createNew = true;
+            }
+            else
+            {
+                createNew = false;
+            }
+
             Destroy(this.gameObject);
         }
     }
