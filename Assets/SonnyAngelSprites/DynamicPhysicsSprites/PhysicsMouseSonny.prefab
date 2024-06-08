@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -2833197701222704750}
   - component: {fileID: 7367860635632997114}
   - component: {fileID: -9165158114026410816}
+  - component: {fileID: -3906057127333716490}
   m_Layer: 7
   m_Name: PhysicsMouseSonny
   m_TagString: Mouse
@@ -31,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 440.2, y: 298, z: -99}
-  m_LocalScale: {x: 16, y: 16, z: 16}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -318,9 +319,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d86a310007361d4429b9ae7e8b3c6269, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angel1: {fileID: 5761698904344283064, guid: 8faee07af3b90ba468d7f0b462739b35, type: 3}
-  angel2: {fileID: 2818246800634697345, guid: 9b775837c64187142821430ee1abcc1a, type: 3}
-  angel3: {fileID: 2866665110524505335, guid: 4cef8e19cbf0f31479c579d03f10aeda, type: 3}
+  angel1: {fileID: 6097723939285029169}
+  angel2: {fileID: 5761698904344283064, guid: 5ca82b8c66f64d043be8ab373741317f, type: 3}
+  angel3: {fileID: 5761698904344283064, guid: 8faee07af3b90ba468d7f0b462739b35, type: 3}
   angel4: {fileID: 4273420756203182663, guid: 528d0e73629c4474aaab42b26a0837a3, type: 3}
-  angel5: {fileID: 6097723939285029169}
-  angel6: {fileID: 4748351178898161839, guid: fbddf418712fe734e83afd466c9d0d4c, type: 3}
+  angel5: {fileID: 2818246800634697345, guid: 9b775837c64187142821430ee1abcc1a, type: 3}
+  angel6: {fileID: 2866665110524505335, guid: 4cef8e19cbf0f31479c579d03f10aeda, type: 3}
+  angel7: {fileID: 5761698904344283064, guid: 37391beddcd5b1f4e91481ff19055e46, type: 3}
+  angel8: {fileID: 4748351178898161839, guid: fbddf418712fe734e83afd466c9d0d4c, type: 3}
+  angel9: {fileID: 4748351178898161839, guid: 45c41b58e97b3b743b8048855e89ae85, type: 3}
+  angel10: {fileID: 5761698904344283064, guid: b01c07f77fb2fe14dbdd62316fceda4a, type: 3}
+--- !u!114 &-3906057127333716490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6097723939285029169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c15bf524b910651439f09a95f4dea213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -10,6 +10,12 @@ TagManager:
   - Nemo
   - Seal
   - Sunflower
+  - Astronaut
+  - Monkey
+  - Cat
+  - Giraffe
+  - Panda
+  - Strawberry
   layers:
   - Default
   - TransparentFX

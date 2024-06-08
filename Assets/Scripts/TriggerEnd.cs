@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class TriggerEnd : MonoBehaviour
 {
-    // Start is called before the first frame update
+
+    private bool end;
+
     void Start()
     {
-        
+        end = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        
+        end = !end;
+        if (end)
+        {
+            Debug.Log(end);
+        }
     }
+
 }
