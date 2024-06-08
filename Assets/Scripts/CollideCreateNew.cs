@@ -41,9 +41,7 @@ public class CollideCreateNew : MonoBehaviour
             and destroys both currSonny and collidedSonny if so */
         if (angelTags[sonnyIndex] == other.gameObject.tag)
         {
-            // currently creates new sonny angel, but just replaces both instead of killing both and only making one
-            destroyed = true;
-
+            // ensures only one new sonny angel is created in place instead of two
             if (!createNew)
             {
                 GameObject newSonny = angels[System.Array.IndexOf(angelTags, currentSonny.gameObject.tag) + 1];
