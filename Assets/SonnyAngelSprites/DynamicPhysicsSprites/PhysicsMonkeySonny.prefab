@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -865786878965465870}
   - component: {fileID: 4335408500711497644}
   - component: {fileID: 7105452733706153242}
+  - component: {fileID: 314265326272339549}
   m_Layer: 7
   m_Name: PhysicsMonkeySonny
   m_TagString: Monkey
@@ -296,3 +297,15 @@ PolygonCollider2D:
       - {x: 0.38, y: -2.62}
       - {x: 0.59, y: -2.57}
   m_UseDelaunayMesh: 0
+--- !u!114 &314265326272339549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4273420756203182663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c15bf524b910651439f09a95f4dea213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

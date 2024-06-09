@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -5861055129762834287}
   - component: {fileID: -1754794767838883300}
   - component: {fileID: 4859375633934400180}
+  - component: {fileID: 1125159317121671986}
   m_Layer: 7
   m_Name: PhysicsPandaSonny
   m_TagString: Panda
@@ -285,3 +286,15 @@ PolygonCollider2D:
       - {x: 0.82, y: -2.435}
       - {x: 0.94, y: -2.395}
   m_UseDelaunayMesh: 0
+--- !u!114 &1125159317121671986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5761698904344283064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c15bf524b910651439f09a95f4dea213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

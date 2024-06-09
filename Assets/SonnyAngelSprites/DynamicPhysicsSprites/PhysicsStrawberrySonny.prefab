@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1705631216894611769}
   - component: {fileID: 7458907827418564966}
   - component: {fileID: -382974943681347941}
+  - component: {fileID: 2831241214217130020}
   m_Layer: 7
   m_Name: PhysicsStrawberrySonny
   m_TagString: Strawberry
@@ -248,3 +249,15 @@ PolygonCollider2D:
       - {x: 0.5, y: -1.795}
       - {x: 0.7, y: -1.735}
   m_UseDelaunayMesh: 0
+--- !u!114 &2831241214217130020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4748351178898161839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c15bf524b910651439f09a95f4dea213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

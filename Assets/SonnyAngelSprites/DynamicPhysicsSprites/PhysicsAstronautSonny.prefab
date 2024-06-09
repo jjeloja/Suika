@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -5861055129762834287}
   - component: {fileID: -1754794767838883300}
   - component: {fileID: 5033070631375279096}
+  - component: {fileID: 5243589087327529265}
   m_Layer: 7
   m_Name: PhysicsAstronautSonny
   m_TagString: Astronaut
@@ -230,3 +231,15 @@ PolygonCollider2D:
       - {x: 0.435, y: -1.01}
       - {x: 0.655, y: -0.84999996}
   m_UseDelaunayMesh: 0
+--- !u!114 &5243589087327529265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5761698904344283064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c15bf524b910651439f09a95f4dea213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
