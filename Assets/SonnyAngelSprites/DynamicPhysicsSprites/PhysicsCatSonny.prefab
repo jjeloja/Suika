@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: -5861055129762834287}
   - component: {fileID: 2123361519553198447}
   - component: {fileID: 120795768718064898}
-  - component: {fileID: -3110981507023454241}
   m_Layer: 7
   m_Name: PhysicsCatSonny
   m_TagString: Cat
@@ -359,15 +358,4 @@ MonoBehaviour:
   angel8: {fileID: 4748351178898161839, guid: fbddf418712fe734e83afd466c9d0d4c, type: 3}
   angel9: {fileID: 4748351178898161839, guid: 45c41b58e97b3b743b8048855e89ae85, type: 3}
   angel10: {fileID: 5761698904344283064, guid: b01c07f77fb2fe14dbdd62316fceda4a, type: 3}
---- !u!114 &-3110981507023454241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5761698904344283064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c15bf524b910651439f09a95f4dea213, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  scoreText: {fileID: 7430171313359714830, guid: 5b9571ee3bbd0784fabb4a61f1f28748, type: 3}

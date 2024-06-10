@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CollideCreateNew : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class CollideCreateNew : MonoBehaviour
     private int sonnyIndex;
     public static bool destroyed = false;
     public static bool createNew = false;
+    private int[] angelScores;
+    public static int gameScore;
+    public Text scoreText;
+
 
     void Start()
     {
@@ -29,8 +34,10 @@ public class CollideCreateNew : MonoBehaviour
         {
             angels = new GameObject[10] { angel1, angel2, angel3, angel4, angel5, angel6, angel7, angel8, angel9, angel10 };
             angelTags = new string[10] { angel1.gameObject.tag, angel2.gameObject.tag, angel3.gameObject.tag, angel4.gameObject.tag, angel5.gameObject.tag, angel6.gameObject.tag, angel7.gameObject.tag, angel8.gameObject.tag, angel9.gameObject.tag, angel10.gameObject.tag };
+            angelScores = new int[10] { 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024 };
         }
 
+        scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
         currentSonny = this.gameObject;
         sonnyIndex = System.Array.IndexOf(angelTags, currentSonny.gameObject.tag);
     }
@@ -49,6 +56,8 @@ public class CollideCreateNew : MonoBehaviour
                 newSonny.gameObject.GetComponent<Collider2D>().enabled = !newSonny.gameObject.GetComponent<Collider2D>().enabled;
                 newSonny.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 createNew = true;
+                gameScore += angelScores[sonnyIndex + 1];
+                scoreText.text = "Score:\n" + gameScore;
             }
             else
             {

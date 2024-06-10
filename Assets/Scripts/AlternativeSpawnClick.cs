@@ -31,7 +31,7 @@ public class AlternativeSpawnClick : MonoBehaviour
 
     currSonny = this.transform.GetChild(0).gameObject;
     newSonny = angels[Random.Range(0, 4)];
-    newSonny = Instantiate(newSonny, new Vector3(630, 390, -99), transform.rotation);
+    newSonny = Instantiate(newSonny, new Vector3(700, 295, -104), transform.rotation);
   }
 
   // Update is called once per frame
@@ -60,12 +60,15 @@ public class AlternativeSpawnClick : MonoBehaviour
     /** updates Wings position to follow mousePos.x  */
     Vector3 mousePos = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, 390, 0);
 
+    /** changes newSonny angel to be at wings */
     gameObject.transform.position = mousePos;
     newSonny.transform.position = mousePos;
     newSonny.transform.SetParent(this.transform);
     currSonny = newSonny;
+
+    /** updated newSonny to create a new angel at side location */
     newSonny = angels[Random.Range(0, 4)];
-    newSonny = Instantiate(newSonny, new Vector3(630, 390, -99), transform.rotation);
+    newSonny = Instantiate(newSonny, new Vector3(700, 295, -104), transform.rotation);
     holdingSonny = true;
   }
 }

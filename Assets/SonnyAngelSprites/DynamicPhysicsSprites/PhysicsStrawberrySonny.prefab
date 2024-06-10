@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1705631216894611769}
   - component: {fileID: 7458907827418564966}
   - component: {fileID: -382974943681347941}
-  - component: {fileID: 2831241214217130020}
   m_Layer: 7
   m_Name: PhysicsStrawberrySonny
   m_TagString: Strawberry
@@ -151,6 +150,7 @@ MonoBehaviour:
   angel8: {fileID: 4748351178898161839}
   angel9: {fileID: 4748351178898161839, guid: 45c41b58e97b3b743b8048855e89ae85, type: 3}
   angel10: {fileID: 5761698904344283064, guid: b01c07f77fb2fe14dbdd62316fceda4a, type: 3}
+  scoreText: {fileID: 7430171313359714830, guid: 5b9571ee3bbd0784fabb4a61f1f28748, type: 3}
 --- !u!60 &-382974943681347941
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -249,15 +249,3 @@ PolygonCollider2D:
       - {x: 0.5, y: -1.795}
       - {x: 0.7, y: -1.735}
   m_UseDelaunayMesh: 0
---- !u!114 &2831241214217130020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4748351178898161839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c15bf524b910651439f09a95f4dea213, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
