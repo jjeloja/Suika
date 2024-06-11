@@ -39,6 +39,14 @@ public class AlternativeSpawnClick : MonoBehaviour
   {
     /** updates Wings position to follow mousePos.x  */
     Vector3 mousePos = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, 390, 0);
+    if (mousePos.x < (int)(currSonny.GetComponent<Renderer>().bounds.size.x / 2f) + 302)
+    {
+      mousePos.x = (int)(currSonny.GetComponent<Renderer>().bounds.size.x / 2f) + 302;
+    }
+    else if (mousePos.x > 576 - (int)(currSonny.GetComponent<Renderer>().bounds.size.x / 2f))
+    {
+      mousePos.x = 576 - (int)(currSonny.GetComponent<Renderer>().bounds.size.x / 2f);
+    }
     transform.position = mousePos;
 
     /** drops current sonny */
@@ -59,6 +67,16 @@ public class AlternativeSpawnClick : MonoBehaviour
 
     /** updates Wings position to follow mousePos.x  */
     Vector3 mousePos = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, 390, 0);
+    if (mousePos.x < (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f) + 302)
+    {
+      mousePos.x = (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f) + 302;
+    }
+    else if (mousePos.x > 576 - (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f))
+    {
+      mousePos.x = 576 - (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f);
+    }
+    transform.position = mousePos;
+
 
     /** changes newSonny angel to be at wings */
     gameObject.transform.position = mousePos;
