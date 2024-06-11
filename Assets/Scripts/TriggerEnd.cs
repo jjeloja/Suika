@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TriggerEnd : MonoBehaviour
 {
+    private static bool end = false;
     private int endInt;
     public Text scoreText;
 
@@ -16,8 +17,9 @@ public class TriggerEnd : MonoBehaviour
     private void OnTriggerStay2D(Collider2D col)
     {
         endInt++;
-        if (endInt > 50)
+        if (endInt > 50 && !end)
         {
+            end = true;
             scoreText.text += "\n\nGame End";
         }
     }
