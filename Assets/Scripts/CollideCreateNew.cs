@@ -19,11 +19,11 @@ public class CollideCreateNew : MonoBehaviour
     private string[] angelTags;
     private GameObject currentSonny;
     private int sonnyIndex;
-    public static bool destroyed = false;
-    public static bool createNew = false;
+    public static bool destroyed;
+    public static bool createNew;
     private int[] angelScores;
     public static int gameScore;
-    public Text scoreText;
+    public static Text scoreText;
 
 
     void Start()
@@ -40,6 +40,8 @@ public class CollideCreateNew : MonoBehaviour
         scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
         currentSonny = this.gameObject;
         sonnyIndex = System.Array.IndexOf(angelTags, currentSonny.gameObject.tag);
+        destroyed = false;
+        createNew = false;
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -52,7 +54,31 @@ public class CollideCreateNew : MonoBehaviour
             if (!createNew)
             {
                 GameObject newSonny = angels[System.Array.IndexOf(angelTags, currentSonny.gameObject.tag) + 1];
-                newSonny = Instantiate(newSonny, currentSonny.gameObject.transform.position, transform.rotation);
+
+                // updates position of new tier of Sonny to ensure no colliding with container walls
+                Vector3 newPos = currentSonny.gameObject.transform.position;
+                if (newSonny == null)
+                {
+                    if (newPos.x < 345)
+                    {
+                        newPos.x = 345;
+                    }
+                    else if (newPos.x > 605)
+                    {
+                        newPos.x = 605;
+                    }
+                }
+                else if (newPos.x < (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f) + 350)
+                {
+                    newPos.x = (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f) + 350;
+                }
+                else if (newPos.x > 610 - (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f))
+                {
+                    newPos.x = 610 - (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f);
+                }
+
+                newSonny = Instantiate(newSonny, newPos, transform.rotation);
+                newSonny.transform.SetParent(GameObject.Find("Canvas").transform);
                 newSonny.gameObject.GetComponent<Collider2D>().enabled = !newSonny.gameObject.GetComponent<Collider2D>().enabled;
                 newSonny.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 createNew = true;

@@ -5,9 +5,14 @@ using UnityEngine.UI;
 
 public class TriggerEnd : MonoBehaviour
 {
-    private static bool end = false;
+    public static bool end;
     private int endInt;
-    public Text scoreText;
+    public GameObject EndScreen;
+
+    void Start()
+    {
+        end = false;
+    }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -20,7 +25,9 @@ public class TriggerEnd : MonoBehaviour
         if (endInt > 50 && !end)
         {
             end = true;
-            scoreText.text += "\n\nGame End";
+            EndScreen.transform.GetChild(0).gameObject.GetComponent<Text>().text = "Score: " + CollideCreateNew.gameScore;
+            EndScreen.transform.SetAsLastSibling();
+            EndScreen.SetActive(true);
         }
     }
 
