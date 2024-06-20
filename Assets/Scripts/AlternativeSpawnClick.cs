@@ -35,7 +35,7 @@ public class AlternativeSpawnClick : MonoBehaviour
 
     currSonny = this.transform.GetChild(0).gameObject;
     newSonny = angels[Random.Range(0, 4)];
-    newSonny = Instantiate(newSonny, new Vector3(732, 280, -104), transform.rotation);
+    newSonny = Instantiate(newSonny, GameObject.Find("NextSonnyBG").transform.position, transform.rotation);
     newSonny.transform.SetParent(GameObject.Find("Canvas").transform);
   }
 
@@ -48,6 +48,9 @@ public class AlternativeSpawnClick : MonoBehaviour
       EndScreen.transform.GetChild(0).gameObject.GetComponent<Text>().text = "Score:\n" + CollideCreateNew.gameScore;
     }
 
+
+    Debug.Log(GameObject.Find("NewContainer").transform.position.x);
+    Debug.Log(GameObject.Find("NewContainer").GetComponent<SpriteRenderer>().sprite.rect.width);
     /** updates Wings position to follow mousePos.x  */
     Vector3 mousePos = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, 390, 0);
     if (currSonny == null)
@@ -61,13 +64,14 @@ public class AlternativeSpawnClick : MonoBehaviour
         mousePos.x = 605;
       }
     }
-    else if (mousePos.x < (int)(currSonny.GetComponent<Renderer>().bounds.size.x / 2f) + 350)
+    // GameObject.Find("NewContainer").GetComponent<RectTransform>().anchoredPosition.x - (GameObject.Find("NewContainer").GetComponent<RectTransform>().sizeDelta.x * 0.5f))
+    else if (mousePos.x < (int)(currSonny.GetComponent<Renderer>().bounds.size.x / 2f) + GameObject.Find("LeftEdge").transform.position.x)
     {
-      mousePos.x = (int)(currSonny.GetComponent<Renderer>().bounds.size.x / 2f) + 350;
+      mousePos.x = (int)(currSonny.GetComponent<Renderer>().bounds.size.x / 2f) + GameObject.Find("LeftEdge").transform.position.x;
     }
-    else if (mousePos.x > 610 - (int)(currSonny.GetComponent<Renderer>().bounds.size.x / 2f))
+    else if (mousePos.x > GameObject.Find("RightEdge").transform.position.x - (int)(currSonny.GetComponent<Renderer>().bounds.size.x / 2f))
     {
-      mousePos.x = 610 - (int)(currSonny.GetComponent<Renderer>().bounds.size.x / 2f);
+      mousePos.x = GameObject.Find("RightEdge").transform.position.x - (int)(currSonny.GetComponent<Renderer>().bounds.size.x / 2f);
     }
     transform.position = mousePos;
 
@@ -104,13 +108,13 @@ public class AlternativeSpawnClick : MonoBehaviour
         mousePos.x = 605;
       }
     }
-    else if (mousePos.x < (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f) + 350)
+    else if (mousePos.x < (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f) + GameObject.Find("LeftEdge").transform.position.x)
     {
-      mousePos.x = (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f) + 350;
+      mousePos.x = (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f) + GameObject.Find("LeftEdge").transform.position.x;
     }
-    else if (mousePos.x > 610 - (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f))
+    else if (mousePos.x > GameObject.Find("RightEdge").transform.position.x - (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f))
     {
-      mousePos.x = 610 - (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f);
+      mousePos.x = GameObject.Find("RightEdge").transform.position.x - (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f);
     }
 
     transform.position = mousePos;
@@ -125,7 +129,7 @@ public class AlternativeSpawnClick : MonoBehaviour
 
     /** updated newSonny to create a new angel at side location */
     newSonny = angels[Random.Range(0, 4)];
-    newSonny = Instantiate(newSonny, new Vector3(732, 280, -104), transform.rotation);
+    newSonny = Instantiate(newSonny, GameObject.Find("NextSonnyBG").transform.position, transform.rotation);
     newSonny.transform.SetParent(GameObject.Find("Canvas").transform);
     holdingSonny = true;
   }
