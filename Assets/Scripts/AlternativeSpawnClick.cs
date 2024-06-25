@@ -37,6 +37,7 @@ public class AlternativeSpawnClick : MonoBehaviour
     newSonny = angels[Random.Range(0, 4)];
     newSonny = Instantiate(newSonny, GameObject.Find("NextSonnyBG").transform.position, transform.rotation);
     newSonny.transform.SetParent(GameObject.Find("Canvas").transform);
+    CollideCreateNew.gameScore = 0;
   }
 
   // Update is called once per frame
@@ -46,6 +47,7 @@ public class AlternativeSpawnClick : MonoBehaviour
     {
       EndScreen.transform.SetAsLastSibling();
       EndScreen.transform.GetChild(0).gameObject.GetComponent<Text>().text = "Score:\n" + CollideCreateNew.gameScore;
+      EndScreen.transform.GetChild(1).gameObject.GetComponent<Text>().text = "High Score:\n" + CollideCreateNew.highScore;
     }
 
 

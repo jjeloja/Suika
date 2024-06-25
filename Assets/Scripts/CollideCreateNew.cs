@@ -23,7 +23,9 @@ public class CollideCreateNew : MonoBehaviour
     public static bool createNew;
     private int[] angelScores;
     public static int gameScore;
+    public static int highScore;
     public static Text scoreText;
+    public static Text highScoreText;
 
 
     void Start()
@@ -38,10 +40,14 @@ public class CollideCreateNew : MonoBehaviour
         }
 
         scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
+        highScoreText = GameObject.Find("HighScoreText").GetComponent<Text>();
         currentSonny = this.gameObject;
         sonnyIndex = System.Array.IndexOf(angelTags, currentSonny.gameObject.tag);
         destroyed = false;
         createNew = false;
+        scoreText.text = "Score\n" + gameScore;
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        highScoreText.text = "High Score\n" + highScore;
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -68,13 +74,13 @@ public class CollideCreateNew : MonoBehaviour
                         newPos.x = 605;
                     }
                 }
-                else if (newPos.x < (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f) + 350)
+                else if (newPos.x < (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f) + GameObject.Find("LeftEdge").transform.position.x)
                 {
-                    newPos.x = (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f) + 350;
+                    newPos.x = (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f) + GameObject.Find("LeftEdge").transform.position.x;
                 }
-                else if (newPos.x > 610 - (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f))
+                else if (newPos.x > GameObject.Find("RightEdge").transform.position.x - (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f))
                 {
-                    newPos.x = 610 - (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f);
+                    newPos.x = (int)GameObject.Find("RightEdge").transform.position.x - (int)(newSonny.GetComponent<Renderer>().bounds.size.x / 2f);
                 }
 
                 newSonny = Instantiate(newSonny, newPos, transform.rotation);
@@ -83,6 +89,14 @@ public class CollideCreateNew : MonoBehaviour
                 newSonny.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 createNew = true;
                 gameScore += angelScores[sonnyIndex + 1];
+                if (gameScore > highScore)
+                {
+                    highScore = gameScore;
+                    PlayerPrefs.SetInt("HighScore", gameScore);
+                    PlayerPrefs.Save();
+                    highScoreText.text = "High Score:\n" + highScore;
+
+                }
                 scoreText.text = "Score:\n" + gameScore;
             }
             else

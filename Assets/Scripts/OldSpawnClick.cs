@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnClick : MonoBehaviour
+public class OldSpawnClick : MonoBehaviour
 {
   public GameObject angel1;
   public GameObject angel2;
