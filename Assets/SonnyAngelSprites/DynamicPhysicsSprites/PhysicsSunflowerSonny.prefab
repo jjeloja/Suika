@@ -291,7 +291,7 @@ MonoBehaviour:
   angel8: {fileID: 4748351178898161839, guid: fbddf418712fe734e83afd466c9d0d4c, type: 3}
   angel9: {fileID: 4748351178898161839}
   angel10: {fileID: 5761698904344283064, guid: b01c07f77fb2fe14dbdd62316fceda4a, type: 3}
-  scoreText: {fileID: 0}
+  collideAudio: {fileID: 8300000, guid: b534d64eac00bbb46a8427b304d7d213, type: 3}
 --- !u!222 &999334722153414829
 CanvasRenderer:
   m_ObjectHideFlags: 0

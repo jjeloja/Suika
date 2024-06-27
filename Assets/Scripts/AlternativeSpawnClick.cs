@@ -21,9 +21,12 @@ public class AlternativeSpawnClick : MonoBehaviour
   public static GameObject currSonny;
   public static GameObject newSonny;
   public GameObject EndScreen;
+  public AudioClip dropAudio;
+  private AudioSource audioSource;
 
   void Start()
   {
+    audioSource = this.GetComponent<AudioSource>();
     holdingSonny = true;
 
     /** instantiates angels as an array of all the provided sonnys */
@@ -80,6 +83,7 @@ public class AlternativeSpawnClick : MonoBehaviour
     /** drops current sonny */
     if ((Input.GetButtonDown("Fire1") || Input.GetMouseButtonDown(0)) && holdingSonny)
     {
+      audioSource.PlayOneShot(dropAudio, 2);
       currSonny.transform.SetParent(GameObject.Find("Canvas").transform);
       currSonny.gameObject.GetComponent<Collider2D>().enabled = !currSonny.gameObject.GetComponent<Collider2D>().enabled;
       currSonny.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;

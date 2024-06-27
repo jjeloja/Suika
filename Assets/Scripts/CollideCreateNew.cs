@@ -26,10 +26,13 @@ public class CollideCreateNew : MonoBehaviour
     public static int highScore;
     public static Text scoreText;
     public static Text highScoreText;
+    public AudioClip collideAudio;
+    AudioSource audioSource;
 
 
     void Start()
     {
+        audioSource = GameObject.Find("WingsLauncher").GetComponent<AudioSource>();
         /** instantiates angels as an array of all the provided sonnys */
         /** instantiates angelTags as an array of all the sonny's tags */
         if (angel1 != null && angel2 != null && angel3 != null && angel4 != null & angel5 != null && angel6 != null && angel7 != null && angel8 != null && angel9 != null && angel10 != null)
@@ -88,6 +91,7 @@ public class CollideCreateNew : MonoBehaviour
                 newSonny.gameObject.GetComponent<Collider2D>().enabled = !newSonny.gameObject.GetComponent<Collider2D>().enabled;
                 newSonny.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 createNew = true;
+                audioSource.PlayOneShot(collideAudio, .7f);
                 gameScore += angelScores[sonnyIndex + 1];
                 if (gameScore > highScore)
                 {
