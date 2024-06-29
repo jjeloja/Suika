@@ -3,24 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AlternativeSpawnClick : MonoBehaviour
+public class SpawnClick : MonoBehaviour
 {
-  public GameObject angel1;
-  public GameObject angel2;
-  public GameObject angel3;
-  public GameObject angel4;
-  public GameObject angel5;
-  public GameObject angel6;
-  public GameObject angel7;
-  public GameObject angel8;
-  public GameObject angel9;
-  public GameObject angel10;
+  public GameObject angel1, angel2, angel3, angel4, angel5, angel6, angel7, angel8, angel9, angel10, EndScreen, SettingsScreen;
   public float launchVelocity = 700f;
   private GameObject[] angels;
   public static bool holdingSonny;
-  public static GameObject currSonny;
-  public static GameObject newSonny;
-  public GameObject EndScreen;
+  public static GameObject currSonny, newSonny;
   public AudioClip dropAudio;
   private AudioSource audioSource;
 
@@ -38,7 +27,7 @@ public class AlternativeSpawnClick : MonoBehaviour
 
     currSonny = this.transform.GetChild(0).gameObject;
     newSonny = angels[Random.Range(0, 4)];
-    newSonny = Instantiate(newSonny, GameObject.Find("NextSonnyBG").transform.position, transform.rotation);
+    newSonny = Instantiate(newSonny, GameObject.Find("NextSonnySpawn").transform.position, transform.rotation);
     newSonny.transform.SetParent(GameObject.Find("Canvas").transform);
     CollideCreateNew.gameScore = 0;
   }
@@ -46,54 +35,60 @@ public class AlternativeSpawnClick : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+    /** if Endscreen, make sure it is the last sibling so it is infront of all other UI. */
     if (EndScreen.activeSelf)
     {
+      SettingsScreen.SetActive(false);
       EndScreen.transform.SetAsLastSibling();
       EndScreen.transform.GetChild(0).gameObject.GetComponent<Text>().text = "Score:\n" + CollideCreateNew.gameScore;
       EndScreen.transform.GetChild(1).gameObject.GetComponent<Text>().text = "High Score:\n" + CollideCreateNew.highScore;
     }
 
-
-    Debug.Log(GameObject.Find("NewContainer").transform.position.x);
-    Debug.Log(GameObject.Find("NewContainer").GetComponent<SpriteRenderer>().sprite.rect.width);
-    /** updates Wings position to follow mousePos.x  */
-    Vector3 mousePos = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, 390, 0);
-    if (currSonny == null)
+    // only allows wings position and dropping of sonnys if settings screen is not visible
+    if (!SettingsScreen.activeSelf)
     {
-      if (mousePos.x < 345)
+      /** updates Wings position to follow mousePos.x  */
+      Vector3 mousePos = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, 390, 0);
+      if (currSonny == null)
       {
-        mousePos.x = 345;
+        if (mousePos.x < 345)
+        {
+          mousePos.x = 345;
+        }
+        else if (mousePos.x > 605)
+        {
+          mousePos.x = 605;
+        }
       }
-      else if (mousePos.x > 605)
+      else if (mousePos.x < (int)(currSonny.GetComponent<Renderer>().bounds.size.x / 2f) + GameObject.Find("LeftEdge").transform.position.x)
       {
-        mousePos.x = 605;
+        mousePos.x = (int)(currSonny.GetComponent<Renderer>().bounds.size.x / 2f) + GameObject.Find("LeftEdge").transform.position.x;
       }
-    }
-    // GameObject.Find("NewContainer").GetComponent<RectTransform>().anchoredPosition.x - (GameObject.Find("NewContainer").GetComponent<RectTransform>().sizeDelta.x * 0.5f))
-    else if (mousePos.x < (int)(currSonny.GetComponent<Renderer>().bounds.size.x / 2f) + GameObject.Find("LeftEdge").transform.position.x)
-    {
-      mousePos.x = (int)(currSonny.GetComponent<Renderer>().bounds.size.x / 2f) + GameObject.Find("LeftEdge").transform.position.x;
-    }
-    else if (mousePos.x > GameObject.Find("RightEdge").transform.position.x - (int)(currSonny.GetComponent<Renderer>().bounds.size.x / 2f))
-    {
-      mousePos.x = GameObject.Find("RightEdge").transform.position.x - (int)(currSonny.GetComponent<Renderer>().bounds.size.x / 2f);
-    }
-    transform.position = mousePos;
-
-    /** drops current sonny */
-    if ((Input.GetButtonDown("Fire1") || Input.GetMouseButtonDown(0)) && holdingSonny)
-    {
-      audioSource.PlayOneShot(dropAudio, 2);
-      currSonny.transform.SetParent(GameObject.Find("Canvas").transform);
-      currSonny.gameObject.GetComponent<Collider2D>().enabled = !currSonny.gameObject.GetComponent<Collider2D>().enabled;
-      currSonny.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-      currSonny.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(0, launchVelocity, 0));
-      holdingSonny = false;
-      if (!TriggerEnd.end)
+      else if (mousePos.x > GameObject.Find("RightEdge").transform.position.x - (int)(currSonny.GetComponent<Renderer>().bounds.size.x / 2f))
       {
-        StartCoroutine(SpawnSonny());
+        mousePos.x = GameObject.Find("RightEdge").transform.position.x - (int)(currSonny.GetComponent<Renderer>().bounds.size.x / 2f);
       }
+      transform.position = mousePos;
 
+      Vector3 actualCursorPos = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, 390, 0);
+      /** drops current sonny if not holdingSonny and SetttingsScreen is not active. */
+      if (actualCursorPos.x > GameObject.Find("OutermostLeft").transform.position.x && actualCursorPos.x < GameObject.Find("OutermostRight").transform.position.x)
+      {
+        if (Input.GetButtonDown("Fire1") && holdingSonny)
+        {
+          audioSource.PlayOneShot(dropAudio, 2);
+          currSonny.transform.SetParent(GameObject.Find("Canvas").transform);
+          currSonny.gameObject.GetComponent<Collider2D>().enabled = !currSonny.gameObject.GetComponent<Collider2D>().enabled;
+          currSonny.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+          currSonny.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(0, launchVelocity, 0));
+          holdingSonny = false;
+          if (!TriggerEnd.end)
+          {
+            StartCoroutine(SpawnSonny());
+          }
+
+        }
+      }
     }
   }
 
@@ -135,7 +130,7 @@ public class AlternativeSpawnClick : MonoBehaviour
 
     /** updated newSonny to create a new angel at side location */
     newSonny = angels[Random.Range(0, 4)];
-    newSonny = Instantiate(newSonny, GameObject.Find("NextSonnyBG").transform.position, transform.rotation);
+    newSonny = Instantiate(newSonny, GameObject.Find("NextSonnySpawn").transform.position, transform.rotation);
     newSonny.transform.SetParent(GameObject.Find("Canvas").transform);
     holdingSonny = true;
   }

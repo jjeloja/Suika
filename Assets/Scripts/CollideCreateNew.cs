@@ -5,16 +5,7 @@ using UnityEngine.UI;
 
 public class CollideCreateNew : MonoBehaviour
 {
-    public GameObject angel1;
-    public GameObject angel2;
-    public GameObject angel3;
-    public GameObject angel4;
-    public GameObject angel5;
-    public GameObject angel6;
-    public GameObject angel7;
-    public GameObject angel8;
-    public GameObject angel9;
-    public GameObject angel10;
+    public GameObject angel1, angel2, angel3, angel4, angel5, angel6, angel7, angel8, angel9, angel10;
     private GameObject[] angels;
     private string[] angelTags;
     private GameObject currentSonny;
@@ -24,10 +15,9 @@ public class CollideCreateNew : MonoBehaviour
     private int[] angelScores;
     public static int gameScore;
     public static int highScore;
-    public static Text scoreText;
-    public static Text highScoreText;
+    public static Text scoreText, highScoreText;
     public AudioClip collideAudio;
-    AudioSource audioSource;
+    private AudioSource audioSource;
 
 
     void Start()
